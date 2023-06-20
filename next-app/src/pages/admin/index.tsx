@@ -9,6 +9,10 @@ import Title from '../components/title';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
+import type { ReactElement } from 'react'
+import Layout from './components/layout'
+import type { NextPageWithLayout } from '../_app'
+
 function createData(
     id: number,
     date: string,
@@ -57,10 +61,9 @@ const rows = [
 ];
 
 
-export default function Dashboard() {
 
 
-
+const Dashboard: NextPageWithLayout = () => {
     return (
         <>
 
@@ -102,3 +105,11 @@ export default function Dashboard() {
         </>
     );
 }
+
+Dashboard.getLayout = function getLayout(page: ReactElement) {
+    return (
+        <Layout>{page}</Layout>
+    )
+}
+
+export default Dashboard
